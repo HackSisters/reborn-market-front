@@ -1,0 +1,77 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build outputs
+/dist/
+/build/
+.out/
+.next/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# MacOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Tailwind CSS generated files
+.tailwind/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# ESLint cache
+.eslintcache
+
+# Jest cache
+.jest/
+
+# Parcel cache
+.cache/
+.parcel-cache/
+
+# Storybook
+.storybook-out/
+
+# Git and CI/CD
+.gitlab-ci.yml
+.circleci/
+
+# Misc
+*.bak
+*.swp
+*.swo
+*.swn
+
+# Ignore local dependencies and lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
