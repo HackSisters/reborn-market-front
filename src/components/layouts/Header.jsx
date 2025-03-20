@@ -64,14 +64,12 @@ const Header = () => {
 
       {/* navegacion */}
       <nav
-        className={`flex absolute top-0 right-0 transition-all duration-300 transform ${
-          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:relative lg:translate-x-0`}
+        className={`flex absolute top-0 right-0 transition-all duration-300 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          } lg:relative lg:translate-x-0`}
       >
         <ul
-          className={`flex flex-row items-center gap-4 p-4 lg:flex ${
-            isMenuOpen ? 'block' : 'hidden'
-          }` }
+          className={`flex flex-row items-center gap-4 p-4 lg:flex ${isMenuOpen ? 'block' : 'hidden'
+            }`}
         >
           <li>
             <CustomButton to="/contact" className="">
@@ -81,6 +79,11 @@ const Header = () => {
 
           {isAuthenticated ? (
             <>
+              <CustomButton
+                to="/add-products"
+              >
+                Vender
+              </CustomButton>
               <li>
                 <CustomButton
                   onClick={logout}

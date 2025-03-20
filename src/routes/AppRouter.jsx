@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import ProductDetail from "../pages/products/ProductDetail";
 import Login from "../pages/users/Login";
 import Contact from "../pages/users/Contact";
+import AddProducts from "../pages/users/AddProducts";
 import MainLayout from "../layouts/MainLayout";
 
 const AppRouter = () => {
@@ -13,6 +14,7 @@ const AppRouter = () => {
                 <Route element={<MainLayout />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/add-products" element={<AddProducts />} />
                     <Route path="/products/:id" element={<ProductDetail />} />
                 </Route>
 
