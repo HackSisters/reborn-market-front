@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductCard from "../components/products/ProductCard";
 import Header from "../components/layouts/Header";
+import Footer from "../components/layouts/Footer";
 
 const products = [
     { 
@@ -42,6 +43,7 @@ const Home = () => {
             </Link>
           ))}
         </div>
+        <Footer/>
         </>
       );
 };
