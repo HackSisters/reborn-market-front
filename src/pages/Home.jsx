@@ -6,6 +6,7 @@ import Hero from "../components/ui/Hero";
 import CategoryFilter from "../components/filters/CategoryFilter";
 import SearchBar from "../components/filters/SearchBar";
 
+
 const products = [
   {
     id: 1,
