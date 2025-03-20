@@ -81,11 +81,6 @@ const Header = () => {
           </li>
           {isAuthenticated ? (
             <>
-              <CustomButton
-                to="/add-products"
-              >
-                Vender
-              </CustomButton>
               <li>
                 <CustomButton
                   onClick={logout}
