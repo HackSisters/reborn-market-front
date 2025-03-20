@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { useForm } from 'react-hook-form';
 import CustomButton from "../ui/buttons/CustomButton";
+
+    //Clouddinary
+const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dtxf1xjmd/image/upload"
+const CLOUDINARY_UPLOAD_PRESET = "ml_default"
 
 const FormAddProducts = () => {
     // Estado para almacenar las categorías que vienen del backend
     const [categories, setCategories] = useState([]);
     const [conditions, setConditions] = useState([]);
     const [imagePreview, setImagePreview] = useState(null);  
+    const [imageUrl, setImageUrl] = useState("");
+
 
     // Simulamos la recepción de categorías del backend
     useEffect(() => {
@@ -26,14 +32,39 @@ const FormAddProducts = () => {
         setConditions(fetchedConditions);
     }, []);
 
+    const uploadImageToCloudinary = async (file) => {
+
+        const formData = new FormData();
+
+        formData.append("file", file);
+        formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+        try {
+            const response = await fetch(CLOUDINARY_URL, {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+            if (data.secure_url) {
+                setImageUrl(data.secure_url); 
+                setImagePreview(data.secure_url);
+            }
+        } catch (error) {
+            console.error("Error subiendo imagen a Cloudinary:", error);
+        }
+    };
     const handleImageChange = (event) => {
+        // const file = event.target.files[0];
+        // if (file) {
+        //     const reader = new FileReader();
+        //     reader.onloadend = () => {
+        //         setImagePreview(reader.result);
+        //     };
+        //     reader.readAsDataURL(file);
+        // }
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagePreview(reader.result);
-            };
-            reader.readAsDataURL(file);
+            uploadImageToCloudinary(file);
         }
     };
 
@@ -49,7 +80,8 @@ const FormAddProducts = () => {
             id: 1, // Esto se generaría en el backend
             name: data.name,
             price: data.price,
-            image: data.image,
+            // image: data.image,
+            image: imageUrl,
             description: data.description,
             category: data.category,
             age: data.age,
