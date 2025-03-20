@@ -1,4 +1,5 @@
 import CustomButton from "../ui/buttons/CustomButton";
+import BtnFavorites from "./BtnFavorites";
 const ProductCardDetail = ({ product }) => {
     return (
         <div className="flex flex-col lg:flex-row bg-white rounded-lg shadow-lg p-6 max-w-4xl mx-auto mt-8">
@@ -15,15 +16,16 @@ const ProductCardDetail = ({ product }) => {
                 </div>
             </div>
 
-            <div className="flex flex-col justify-center items-left lg:w-1/2 lg:pl-8">
-                <h3 className="text-4xl font-semibold text-gray-800 mb-4">{product.name}</h3>
-                <p className="text-lg text-gray-600 mb-4">{product.description}</p>
-                <p className="text-lg text-gray-600 mb-4">Edad: 4 años</p>
+            <div className="flex flex-col justify-center items-left gap-4 lg:w-1/2 lg:pl-8">
+                <h3 className="text-4xl font-semibold text-gray-800">{product.name}</h3>
+                <p className="text-lg text-gray-600">{product.description}</p>
+                <p className="text-lg text-gray-600">Edad: 4 años</p>
                 <p className="text-xl font-medium text-gray-800">Precio: <span className="text-violet">{product.price}€</span></p>
                 <CustomButton
                 disabled={true}
                 className={`mt-4 px-4 py-2 bg-light-green text-violet rounded w-1/2`}
                 >Comprar</CustomButton>
+                <BtnFavorites/>
             </div>
         </div>
     );

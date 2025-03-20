@@ -6,7 +6,6 @@ import ProductCard from "../components/products/ProductCard";
 import Hero from "../components/ui/Hero";
 import CategoryFilter from "../components/filters/CategoryFilter";
 import SearchBar from "../components/filters/SearchBar";
-import Footer from "../components/layouts/Footer";
 
 const products = [
   {
@@ -58,11 +57,12 @@ const products = [
 
 
 const Home = () => {
-  const { data: products, error, loading } = useFetch(() => fetchProducts());
 
-    if(error) return <p>{error}</p>;
-    if(loading) return;
-    console.log(products);
+  // const { data: products, error, loading } = useFetch(() => fetchProducts());
+
+  // if(error) return <p>{error}</p>;
+  // if(loading) return;
+  // console.log(products);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -76,7 +76,7 @@ const Home = () => {
   });
 
   return (
-    <section className="flex flex-col gap-10 justify-center items-center w-full">
+    <section className="flex flex-col gap-10 justify-center items-center w-full my-12">
       <Hero />
 
       {/* buscador y filtro */}
@@ -110,7 +110,7 @@ const Home = () => {
 
         </div>
       </div>
-      <Footer/>
+
     </section>
     
   );
