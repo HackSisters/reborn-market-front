@@ -7,11 +7,9 @@ const Footer = () => {
     <footer className="bg-[#0B2618] py-8 w-full">
       <div className="flex flex-wrap items-start justify-between text-white max-w-screen-xl mx-auto px-4">
        
-        <div className="footer-logo mb-6 justify-center">
-          <img src={logo} alt="Reborn Market Logo" className="footer-logo-img max-w-[400px]" />
-        </div>
-
-        
+       <div className="footer-logo mb-6 flex items-center justify-center h-32">
+  <img src={logo} alt="Reborn Market Logo" className="footer-logo-img max-w-full" />
+</div>
         <div className="footer-links mb-6">
           <ul className="space-y-2">
             <li><a href="#inicio" className="hover:underline">Inicio</a></li>
