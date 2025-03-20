@@ -1,25 +1,11 @@
-import { useEffect, useState } from "react";
+import { useFetch } from "../hooks/UseFetch";
 import { fetchProducts } from "../services/FetchService";
 
 const Home = () => {
-    const [products, setProducts] = useState([]);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        async function loadData() {
-            try {
-                const res = await fetchProducts();
-                setProducts(res);
-            } catch (err) {
-                console.error('Error fetching media:', err);
-                setError('Error al cargar  los datos. Por favor, intenta  de nuevo.');
-            } 
-
-        }
-        loadData();
-    }, []);
+  const { data: products, error, loading } = useFetch(() => fetchProducts());
 
     if(error) return <p>{error}</p>;
+    if(loading) return;
     console.log(products);
 
     return (
