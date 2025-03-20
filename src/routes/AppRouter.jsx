@@ -1,17 +1,24 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "../contexts/AuthProvider";
 import Home from "../pages/Home";
 import ProductDetail from "../pages/products/ProductDetail";
 import Login from "../pages/users/Login";
-import { AuthProvider } from "../contexts/AuthProvider";
+import Contact from "../pages/users/Contact";
+import MainLayout from "../layouts/MainLayout";
 
 const AppRouter = () => {
     return (
         <AuthProvider>
-                <Routes>
+            <Routes>
+                <Route element={<MainLayout />}>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route path="/products/:id" element={<ProductDetail />} />
-                </Routes>
+                </Route>
+
+
+                <Route path="/login" element={<Login />} />
+            </Routes>
         </AuthProvider>
 
     )
