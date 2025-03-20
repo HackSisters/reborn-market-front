@@ -1,10 +1,10 @@
+import AppRouter from './routes/AppRouter';
 
 function App() {
+
   return (
-    <>
-      <h1 className="text-red-500"> Hello React + Tailwind </h1>
-    </>
+    <AppRouter/>
   )
 }
-
-export default App
+  
+export default App;
