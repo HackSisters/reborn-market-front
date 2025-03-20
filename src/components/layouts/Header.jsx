@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthProvider';
 import CustomButton from "../ui/buttons/CustomButton";
-import LogoLight from '../../assets/images/logo-light.png';
+import LogoLight from '../../assets/images/logo-dark-full.svg';
 
 const Header = () => {
   const { isAuthenticated, logout } = useAuth();
@@ -20,7 +20,7 @@ const Header = () => {
         <img
           src={LogoLight}
           alt="Logo"
-          className="w-12 hover:scale-110 transition-transform"
+          className="w-64 hover:scale-110 transition-transform"
         />
       </Link>
 
