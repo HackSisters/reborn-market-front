@@ -9,7 +9,6 @@ The name "Reborn" reflects our mission to breathe new life into pre-loved items 
 ## ✨ Features
 
 -   **Comprehensive Categories:** Clothing, Accessories, Toys, Footwear, Furniture, Baby Gear, Maternity, Health & Safety, and more.
--   **Advanced Filtering:** Search by age, condition (new/used), and price range.
 -   **User-Friendly Design:** Clean and intuitive interface for both browsing and purchasing.
 -   **Flexible Pricing:** From premium brands to completely free items.
 -   **Community-Oriented:** Allowing parents to donate items they no longer need.
@@ -18,10 +17,9 @@ The name "Reborn" reflects our mission to breathe new life into pre-loved items 
 
 ## 🛠️ Technologies
 
--   **Frontend:** HTML, CSS, JavaScript
--   **Frameworks/Libraries:** React, Tailwind CSS
--   **Backend:** Node.js, Express
--   **Database:** MongoDB
+-   **Frontend:** React, Tailwind CSS
+-   **Backend:** Java
+-   **Database:** PostgreSQL
 -   **Version Control:** Git and GitHub
 
 ## 🚀 Getting Started
@@ -56,16 +54,12 @@ npm install
 npm start
 ```
 
-The application will be available at: `http://localhost:3000`
+The application will be available at: `http://localhost:5173`
 
 ### Environment Variables
 
-Create a `.env` file in the root directory and add the following:
+Create a `.env` file in the root directory. Ask the contributors
 
-```bash
-PORT=3000
-MONGO_URI=mongodb://localhost:27017/reborn_market
-```
 
 ## 👥 Contributors
 
