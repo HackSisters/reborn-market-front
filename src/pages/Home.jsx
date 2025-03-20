@@ -69,7 +69,7 @@ const Home = () => {
   });
 
   return (
-    <section className="flex flex-col gap-10 justify-center items-center w-full">
+    <section className="flex flex-col gap-10 justify-center items-center w-full my-12">
       <Hero />
 
       {/* buscador y filtro */}
