@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import CustomButton from "../ui/buttons/CustomButton";
+import { useFetch } from '../../hooks/UseFetch';
+import { fetchNewProduct } from '../../services/FetchService';
 
 const FormAddProducts = () => {
     // Estado para almacenar las categorías que vienen del backend
     const [categories, setCategories] = useState([]);
     const [conditions, setConditions] = useState([]);
-    const [imagePreview, setImagePreview] = useState(null);  
+    const [imagePreview, setImagePreview] = useState(null);
+    const [productData, setProductData] = useState("");
+    const { data, error, loading } = useFetch(() => fetchNewProduct(productData));
 
     // Simulamos la recepción de categorías del backend
     useEffect(() => {
@@ -46,14 +50,14 @@ const FormAddProducts = () => {
 
     const onSubmit = (data) => {
         const productData = {
-            id: 1, // Esto se generaría en el backend
             name: data.name,
             price: data.price,
-            image: data.image,
+            //image: data.image,
             description: data.description,
             category: data.category,
             age: data.age,
         };
+        setProductData(productData);
         console.log("Datos del producto enviado: ", productData);
     };
 

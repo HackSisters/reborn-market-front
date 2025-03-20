@@ -8,12 +8,12 @@ function useFetch(fetchFunction, dependencies = []) {
 
 
     useEffect(() => {
-        async function loadData() {
+        async function loadData(fetchFunction) {
             
             if (didFetch.current) return;
             didFetch.current = true;
             try {
-                const res = await fetchFunction();
+                const res = await fetchFunction;
                 setData(res);
             } catch (err) {
                 console.error('Error fetching media:', err);

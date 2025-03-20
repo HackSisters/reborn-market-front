@@ -7,7 +7,7 @@ import Hero from "../components/ui/Hero";
 import CategoryFilter from "../components/filters/CategoryFilter";
 import SearchBar from "../components/filters/SearchBar";
 
-const products = [
+/*const products = [
   {
     id: 1,
     name: "Zapatillas Nike",
@@ -53,25 +53,25 @@ const products = [
     category: "Ropa",
     age: "Niño (3-5 años)"
   }
-];
+];*/
 
 
 const Home = () => {
 
-  // const { data: products, error, loading } = useFetch(() => fetchProducts());
-
-  // if(error) return <p>{error}</p>;
-  // if(loading) return;
-  // console.log(products);
+  const { data: products, error, loading } = useFetch(() => fetchProducts());
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  const categories = [...new Set(products.map((product) => product.category))];
+  if(error) return <p>{error}</p>;
+  if(loading) return;
+  console.log(products);
+
+  const categories = [...new Set(products.map((product) => product.category.name))];
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
+    const matchesCategory = selectedCategory ? product.category.name === selectedCategory : true;
     return matchesSearch && matchesCategory;
   });
 
@@ -93,8 +93,7 @@ const Home = () => {
       <div className="flex flex-col justify-center items-center w-full">
         <h2 className="text-3xl font-bold">Nuestros productos</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-8 max-w-screen-xl w-full">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
+          {filteredProducts.length > 0 ? (filteredProducts.map((product) => (
               <Link
                 key={product.id}
                 to={`/products/${product.id}`}
