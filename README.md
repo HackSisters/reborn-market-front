@@ -1,10 +1,10 @@
 # 🌱 Reborn Market
 
-Reborn Market is a unique marketplace designed for parents who want to give a second life to children's items. Instead of throwing away clothes, toys, or furniture as their children grow, parents can sell, donate, or exchange them with other families. Our goal is to promote sustainability and affordability by allowing both companies and individuals to participate.
+Reborn Market is a unique marketplace designed for parents who want to give a second life to children's items, as well as discover new products. Instead of throwing away clothes, toys, or furniture as their children grow, parents can sell, donate, exchange, or even buy new items from trusted vendors. Our goal is to promote sustainability, affordability, and convenience by allowing both companies and individuals to participate.
 
 ## 🌍 Philosophy
 
-The name "Reborn" reflects our mission to breathe new life into pre-loved items and reduce waste. We believe that every product deserves a second chance and that families should have easy access to affordable and even free items. The platform supports a wide range of price segments, from high-quality branded goods to free items donated by other parents.
+The name "Reborn" reflects our mission to breathe new life into pre-loved items and reduce waste, while also offering new, high-quality products for families in need. We believe that every product deserves a second chance, and that families should have easy access to affordable, sustainable, and even free items. The platform supports a wide range of price segments, from high-quality branded goods to free items donated by other parents, as well as brand-new products from trusted vendors.
 
 ## ✨ Features
 
