@@ -88,7 +88,6 @@ const FormAddProducts = () => {
 
         setProductData(productData);
         fetchData(() => fetchNewProduct(productData));
-        console.log("Datos del producto enviado: ", productData);
     };
 
     return (
