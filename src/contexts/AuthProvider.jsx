@@ -7,7 +7,6 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
-  // "fakeamos" el login y el logout
   const login = (username, password) => {
     if (username && password) {
       setIsAuthenticated(true); 
@@ -26,5 +25,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// hook para manejo de contexto
 export const useAuth = () => useContext(AuthContext);
