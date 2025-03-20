@@ -4,11 +4,11 @@ import CustomButton from "../ui/buttons/CustomButton";
 
 const ContactForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [messageSent, setMessageSent] = useState(false); 
+    const [messageSent, setMessageSent] = useState(false);
 
     const onSubmit = (data) => {
         console.log(data);
-        setMessageSent(true); 
+        setMessageSent(true);
 
         setTimeout(() => {
             setMessageSent(false);
@@ -16,8 +16,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-
+        <div className="p-6 bg-white shadow-lg rounded-lg">
             {messageSent && (
                 <div className="fixed top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center">
                     <div className="bg-green-300 p-6 rounded-lg shadow-lg text-white text-lg font-bold w-80 h-40 flex justify-center items-center">
@@ -26,12 +25,12 @@ const ContactForm = () => {
                 </div>
             )}
 
-            <form onSubmit={handleSubmit(onSubmit)} className="w-lg space-y-4 flex flex-col justify-center items-center">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-xs md:w-md lg:w-lg space-y-4 flex flex-col justify-center items-center">
                 <div className="w-full flex flex-col items-center gap-2">
                     <label htmlFor="name" className="block text-sm font-medium">Nombre:</label>
                     <input
                         id="name"
-                        className="w-2/3 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-2"
+                        className="w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-2/3 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-2"
                         {...register('name', {
                             required: 'El nombre es obligatorio',
                             maxLength: {
@@ -51,7 +50,7 @@ const ContactForm = () => {
                     <label htmlFor="surname" className="block text-sm font-medium">Apellido:</label>
                     <input
                         id="surname"
-                        className="w-2/3 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-2"
+                        className="w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-2/3 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-2"
                         {...register('surname', {
                             required: 'El apellido es obligatorio',
                             maxLength: {
@@ -71,7 +70,7 @@ const ContactForm = () => {
                     <label htmlFor="email" className="block text-sm font-medium">Correo Electrónico:</label>
                     <input
                         id="email"
-                        className="w-2/3 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-2"
+                        className="w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-2/3 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-2"
                         {...register('email', {
                             required: 'El correo electrónico es obligatorio',
                             pattern: {
@@ -87,7 +86,7 @@ const ContactForm = () => {
                     <label htmlFor="message" className="block text-sm font-medium">Mensaje:</label>
                     <textarea
                         id="message"
-                        className="w-2/3 h-32 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-2"
+                        className="w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-2/3 h-32 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-2"
                         {...register('message', {
                             required: 'El mensaje es obligatorio',
                             maxLength: {
@@ -104,7 +103,7 @@ const ContactForm = () => {
 
                 <CustomButton
                     type="submit"
-                    className="w-2/3 py-2 px-4 bg-violet-2 text-white"
+                    className="w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-2/3 py-2 px-4 bg-violet-2 text-white"
                 >
                     Enviar
                 </CustomButton>
