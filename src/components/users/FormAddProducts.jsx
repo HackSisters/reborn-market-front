@@ -76,7 +76,7 @@ const FormAddProducts = () => {
     } = useForm();
 
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const productData = {
             name: data.name,
             image: imageUrl,
@@ -89,8 +89,16 @@ const FormAddProducts = () => {
         };
 
         setProductData(productData);
-        fetchData(() => fetchNewProduct(productData));
-        navigate('/');
+        try {
+            await fetchData(() => fetchNewProduct(productData));
+            if(productData) {
+                
+                navigate('/');
+
+            }
+        } catch (error) {
+            console.error('Error al crear el producto:', error);
+        }
     };
     return (
         <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md">
