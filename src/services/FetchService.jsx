@@ -19,7 +19,7 @@ function fetchProducts() {
 }
 
 function fetchNewProduct(product){
-    return httpRequest('POST','/products', params = {body: JSON.stringify(product)});
+    return httpRequest('POST','/products', {body: JSON.stringify(product)});
     
 }
 /*function fetchCategories() {  
