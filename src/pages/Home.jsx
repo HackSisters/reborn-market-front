@@ -55,7 +55,9 @@ const products = [
   }
 ];
 
+
 const Home = () => {
+
   // const { data: products, error, loading } = useFetch(() => fetchProducts());
 
   // if(error) return <p>{error}</p>;
@@ -105,8 +107,10 @@ const Home = () => {
           ) : (
             <p className="text-red-400">No se encontraron productos</p>
           )}
+
         </div>
       </div>
+
     </section>
     
   );
