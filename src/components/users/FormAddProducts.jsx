@@ -16,12 +16,19 @@ const FormAddProducts = () => {
     const [productData, setProductData] = useState("");
     const { data, error, loading, fetchData } = useFetch();
 
-    // Simulamos la recepción de categorías del backend
     useEffect(() => {
         const fetchedCategories = [
-            { id: 1, name: 'Cunas' },
-            { id: 2, name: 'Juguetes' },
-            { id: 3, name: 'Ropa' },
+            { id: 1, name: "ROPA" },
+            { id: 2, name: "CALZADO" },
+            { id: 3, name: "JUGUETES" },
+            { id: 4, name: "ACCESORIOS" },
+            { id: 5, name: "ARTÍCULOS PARA BEBÉ" },
+            { id: 6, name: "SALUD Y SEGURIDAD" },
+            { id: 7, name: "MUEBLES" },
+            { id: 8, name: "ALIMENTACIÓN" },
+            { id: 9, name: "LIBROS" },
+            { id: 10, name: "ROPA DE CAMA" },
+            { id: 11, name: "MATERNIDAD" }
         ];
         setCategories(fetchedCategories);
 
