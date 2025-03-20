@@ -1,71 +1,33 @@
 import { useFetch } from "../hooks/UseFetch";
 import { fetchProducts } from "../services/FetchService";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "../components/products/ProductCard";
 import Hero from "../components/ui/Hero";
 import CategoryFilter from "../components/filters/CategoryFilter";
 import SearchBar from "../components/filters/SearchBar";
 
-/*const products = [
-  {
-    id: 1,
-    name: "Zapatillas Nike",
-    price: 120,
-    image: "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&h=300",
-    description: "Zapatillas deportivas Nike, ligeras y cómodas, ideales para correr y entrenar.",
-    category: "Calzado",
-    age: "Adulto"
-  },
-  {
-    id: 2,
-    name: "Camisa Adidas",
-    price: 45,
-    image: "https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&h=300",
-    description: "Camisa deportiva Adidas de algodón, perfecta para un estilo casual y cómodo.",
-    category: "Ropa",
-    age: "Adulto"
-  },
-  {
-    id: 3,
-    name: "Reloj Casio",
-    price: 60,
-    image: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&h=300",
-    description: "Reloj digital Casio resistente al agua, con cronómetro y luz LED integrada.",
-    category: "Accesorios",
-    age: "Adulto"
-  },
-  {
-    id: 4,
-    name: "Zapatillas Bebé",
-    price: 35,
-    image: "https://images.pexels.com/photos/1257110/pexels-photo-1257110.jpeg?auto=compress&cs=tinysrgb&h=300",
-    description: "Zapatillas suaves y cómodas para bebés, con suela antideslizante.",
-    category: "Calzado",
-    age: "Bebé (0-2 años)"
-  },
-  {
-    id: 5,
-    name: "Conjunto Infantil",
-    price: 50,
-    image: "https://images.pexels.com/photos/6623813/pexels-photo-6623813.jpeg?auto=compress&cs=tinysrgb&h=300",
-    description: "Conjunto de ropa infantil de algodón, ideal para niños de 3 a 5 años.",
-    category: "Ropa",
-    age: "Niño (3-5 años)"
-  }
-];*/
-
 
 const Home = () => {
-
-  const { data: products, error, loading } = useFetch(() => fetchProducts());
+  
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [products, setProducts] = useState([]);
+  const { data, error, loading, fetchData } = useFetch();
+  useEffect(() => {
+    fetchData(fetchProducts);
+  }, []);
+  useEffect(() => {
+    if (data && Array.isArray(data)) {
+      setProducts(data);
+    }
+  }, [data]);
 
   if(error) return <p>{error}</p>;
   if(loading) return;
   console.log(products);
+
 
   const categories = [...new Set(products.map((product) => product.category.name))];
 

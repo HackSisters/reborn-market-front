@@ -1,12 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import { useForm } from 'react-hook-form';
 import CustomButton from "../ui/buttons/CustomButton";
+import { useFetch } from '../../hooks/UseFetch';
+import { fetchNewProduct } from '../../services/FetchService';
 
     //Clouddinary
 const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dtxf1xjmd/image/upload"
 const CLOUDINARY_UPLOAD_PRESET = "HackatonF5"
-import { useFetch } from '../../hooks/UseFetch';
-import { fetchNewProduct } from '../../services/FetchService';
 
 const FormAddProducts = () => {
     const [categories, setCategories] = useState([]);

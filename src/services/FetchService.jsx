@@ -37,15 +37,6 @@ function fetchNewProduct(product){
           { "id": 11, "name": "MATERNIDAD" }
         ]
     return httpRequest('/categories');
-}
-function fetchConditions() {
-    return {
-        "conditions": [
-          { "id": 1, "name": "USADO" },
-          { "id": 2, "name": "NUEVO" }
-        ]
-    }
-    return httpRequest('/conditions');
 }*/
 
 export { fetchProducts, fetchNewProduct };
