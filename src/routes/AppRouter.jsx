@@ -5,6 +5,7 @@ import ProductDetail from "../pages/products/ProductDetail";
 import Login from "../pages/users/Login";
 import Contact from "../pages/users/Contact";
 import MainLayout from "../layouts/MainLayout";
+import CookieConsent from "../components/users/CookieConsent";
 
 const AppRouter = () => {
     return (
@@ -16,9 +17,9 @@ const AppRouter = () => {
                     <Route path="/products/:id" element={<ProductDetail />} />
                 </Route>
 
-
                 <Route path="/login" element={<Login />} />
             </Routes>
+            <CookieConsent />
         </AuthProvider>
 
     )
