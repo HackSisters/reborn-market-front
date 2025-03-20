@@ -1,11 +1,11 @@
-
+import { useFetch } from "../hooks/UseFetch";
+import { fetchProducts } from "../services/FetchService";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ProductCard from "../components/products/ProductCard";
 import Hero from "../components/ui/Hero";
 import CategoryFilter from "../components/filters/CategoryFilter";
 import SearchBar from "../components/filters/SearchBar";
-
 
 const products = [
   {
@@ -56,6 +56,12 @@ const products = [
 ];
 
 const Home = () => {
+
+  // const { data: products, error, loading } = useFetch(() => fetchProducts());
+
+  // if(error) return <p>{error}</p>;
+  // if(loading) return;
+  // console.log(products);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
