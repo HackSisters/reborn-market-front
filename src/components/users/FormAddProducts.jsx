@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import CustomButton from "../ui/buttons/CustomButton";
 import { useFetch } from '../../hooks/UseFetch';
 import { fetchNewProduct } from '../../services/FetchService';
+import { useNavigate } from 'react-router-dom';
 
-    //Clouddinary
+
 const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dtxf1xjmd/image/upload"
 const CLOUDINARY_UPLOAD_PRESET = "HackatonF5"
 
@@ -15,6 +16,7 @@ const FormAddProducts = () => {
     const [imageUrl, setImageUrl] = useState("");
     const [productData, setProductData] = useState("");
     const { data, error, loading, fetchData } = useFetch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchedCategories = [
@@ -88,8 +90,8 @@ const FormAddProducts = () => {
 
         setProductData(productData);
         fetchData(() => fetchNewProduct(productData));
+        navigate('/');
     };
-
     return (
         <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold text-center mb-6">Agregar Producto Nuevo</h2>
