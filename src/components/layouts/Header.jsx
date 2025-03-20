@@ -76,7 +76,11 @@ const Header = () => {
               Contacto
             </CustomButton>
           </li>
-
+          <li>
+            <CustomButton to="/add-products" className="">
+              Añadir anuncio
+            </CustomButton>
+          </li>
           {isAuthenticated ? (
             <>
               <CustomButton
