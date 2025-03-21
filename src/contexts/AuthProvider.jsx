@@ -6,7 +6,6 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isRedirecting, setIsRedirecting] = useState(true);
   const navigate = useNavigate();
 
   const login = async (username, password) => {
@@ -25,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     if (isAuthenticated) {
       navigate("/");
     }
-  }, [isAuthenticated, navigate]); 
+  }, [isAuthenticated]); 
 
   const logout = () => {
     setIsAuthenticated(false); 
