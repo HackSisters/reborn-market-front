@@ -75,3 +75,7 @@ $RECYCLE.BIN/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Cypress
+cypress/videos
+cypress/screenshots
