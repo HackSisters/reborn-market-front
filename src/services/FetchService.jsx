@@ -1,6 +1,11 @@
-async function httpRequest() {
+const BASE_URL = 'http://localhost:8080/api/v1';  
+async function httpRequest(method, endpoint, params = {}) {
     try {
-        const response = await fetch(`http://localhost:8080/api/v1/products`);
+        const response = await fetch(`${BASE_URL}${endpoint}`, {
+            method,
+            headers: { 'Content-Type': 'application/json' }, 
+            ...params  
+        });
         if (!response.ok) throw new Error("Error al obtener los datos");
         const data = await response.json();
         return data;
@@ -10,7 +15,12 @@ async function httpRequest() {
     }
 };
 function fetchProducts() {  
-    return httpRequest();
+    return httpRequest('GET','/products');
 }
 
-export { fetchProducts };
+function fetchNewProduct(product){
+    return httpRequest('POST','/products', {body: JSON.stringify(product)});
+    
+}
+
+export { fetchProducts, fetchNewProduct };

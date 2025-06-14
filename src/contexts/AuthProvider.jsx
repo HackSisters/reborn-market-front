@@ -1,5 +1,6 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { authRequest } from '../services/AuthService';
 const AuthContext = createContext();
 
 
@@ -7,12 +8,23 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
-  // "fakeamos" el login y el logout
-  const login = (username, password) => {
+  const login = async (username, password) => {
     if (username && password) {
-      setIsAuthenticated(true); 
+      try {
+        const isAuthenticated = await authRequest(username, password);
+        setIsAuthenticated(isAuthenticated);
+  
+        
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
   };
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]); 
 
   const logout = () => {
     setIsAuthenticated(false); 
@@ -26,5 +38,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// hook para manejo de contexto
 export const useAuth = () => useContext(AuthContext);

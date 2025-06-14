@@ -1,32 +1,24 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
-function useFetch(fetchFunction, dependencies = []) {
-    const [data, setData] = useState([]);
+function useFetch() {
+    const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const didFetch = useRef(false);
+    const [loading, setLoading] = useState(false);
 
-
-    useEffect(() => {
-        async function loadData() {
-            
-            if (didFetch.current) return;
-            didFetch.current = true;
-            try {
-                const res = await fetchFunction();
-                setData(res);
-            } catch (err) {
-                console.error('Error fetching media:', err);
-                setError('Error al cargar  los datos. Por favor, intenta  de nuevo.');
-            }finally {
-                setLoading(false);
-            }
-
+    const fetchData = async (fetchFunction) => {
+        setLoading(true);
+        try {
+            const res = await fetchFunction();
+            setData(res);
+        } catch (err) {
+            console.error('Error fetching data:', err);
+            setError("Error al cargar los datos. Intenta de nuevo.");
+        } finally {
+            setLoading(false);
         }
-        loadData();
-    }, dependencies);
+    };
 
-    return { data, error, loading };
-};
+    return { data, error, loading, fetchData };
+}
 
-export {useFetch};
+export { useFetch };
