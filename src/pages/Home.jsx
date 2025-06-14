@@ -26,7 +26,6 @@ const Home = () => {
 
   if(error) return <p>{error}</p>;
   if(loading) return;
-  console.log(products);
 
 
   const categories = [...new Set(products.map((product) => product.category.name))];

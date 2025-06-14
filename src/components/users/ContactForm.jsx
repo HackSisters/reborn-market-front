@@ -7,7 +7,6 @@ const ContactForm = () => {
     const [messageSent, setMessageSent] = useState(false);
 
     const onSubmit = (data) => {
-        console.log(data);
         setMessageSent(true);
 
         setTimeout(() => {

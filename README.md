@@ -6,6 +6,22 @@ Reborn Market is a unique marketplace designed for parents who want to give a se
 
 The name "Reborn" reflects our mission to breathe new life into pre-loved items and reduce waste, while also offering new, high-quality products for families in need. We believe that every product deserves a second chance, and that families should have easy access to affordable, sustainable, and even free items. The platform supports a wide range of price segments, from high-quality branded goods to free items donated by other parents, as well as brand-new products from trusted vendors.
 
+## 💡Project Description
+
+This project was developed during the **7th edition of the HACKATHONF5**, organized by **Fundación Somos F5** and the multinational company **Globant**.  
+The entire development took place on **March 18 and 20**, and was presented on **March 21, 2025**.
+
+We are proud to say that our team was selected as **the winning team** of the hackathon.
+
+We built the project based on the specifications provided at the beginning of the hackathon.  
+Following the theme, we created a **marketplace focused on parenting**, where users can sell and buy products like clothes, toys, and more.
+
+## 📦 Versions
+
+| Version | Date       | Main Changes                              | Link |
+|---------|------------|--------------------------------------------|------|
+| v1.0.0  | 2025-03-21 | First stable release, developed during a 48-hour hackathon with our full team release                       | [🔗 Download](https://github.com/HackSisters/reborn-market-front/releases/tag/v1.0.0) |
+
 ## ✨ Features
 
 -   **Comprehensive Categories:** Clothing, Accessories, Toys, Footwear, Furniture, Baby Gear, Maternity, Health & Safety, and more.

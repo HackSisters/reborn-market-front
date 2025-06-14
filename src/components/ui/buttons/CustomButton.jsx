@@ -6,9 +6,9 @@ const Button = ({ onClick, children, className, type = "button", disabled = fals
 
   const handleClick = () => {
     if (to) {
-      navigate(to);  // Si se pasa la prop `to`, navegará a esa ruta.
+      navigate(to);
     } else if (onClick) {
-      onClick();  // Si se pasa un `onClick`, ejecutará esa función.
+      onClick();
     }
   };
 
@@ -19,7 +19,7 @@ const Button = ({ onClick, children, className, type = "button", disabled = fals
       className={`p-2 rounded-md hover:scale-110 transition transform cursor-pointer
       disabled:hover:scale-100 disabled:opacity-50 disabled:pointer-events-none ${className}`}
       disabled={disabled}
-      form={form} // Si es un formulario, puede estar asociado a un formulario específico
+      form={form}
     >
       {children}
     </button>

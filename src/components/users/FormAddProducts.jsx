@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import CustomButton from "../ui/buttons/CustomButton";
 import { useFetch } from '../../hooks/UseFetch';
 import { fetchNewProduct } from '../../services/FetchService';
+import { useNavigate } from 'react-router-dom';
 
-    //Clouddinary
+
 const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dtxf1xjmd/image/upload"
 const CLOUDINARY_UPLOAD_PRESET = "HackatonF5"
 
@@ -15,13 +16,21 @@ const FormAddProducts = () => {
     const [imageUrl, setImageUrl] = useState("");
     const [productData, setProductData] = useState("");
     const { data, error, loading, fetchData } = useFetch();
+    const navigate = useNavigate();
 
-    // Simulamos la recepción de categorías del backend
     useEffect(() => {
         const fetchedCategories = [
-            { id: 1, name: 'Cunas' },
-            { id: 2, name: 'Juguetes' },
-            { id: 3, name: 'Ropa' },
+            { id: 1, name: "ROPA" },
+            { id: 2, name: "CALZADO" },
+            { id: 3, name: "JUGUETES" },
+            { id: 4, name: "ACCESORIOS" },
+            { id: 5, name: "ARTÍCULOS PARA BEBÉ" },
+            { id: 6, name: "SALUD Y SEGURIDAD" },
+            { id: 7, name: "MUEBLES" },
+            { id: 8, name: "ALIMENTACIÓN" },
+            { id: 9, name: "LIBROS" },
+            { id: 10, name: "ROPA DE CAMA" },
+            { id: 11, name: "MATERNIDAD" }
         ];
         setCategories(fetchedCategories);
 
@@ -67,7 +76,7 @@ const FormAddProducts = () => {
     } = useForm();
 
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const productData = {
             name: data.name,
             image: imageUrl,
@@ -80,10 +89,17 @@ const FormAddProducts = () => {
         };
 
         setProductData(productData);
-        fetchData(() => fetchNewProduct(productData));
-        console.log("Datos del producto enviado: ", productData);
-    };
+        try {
+            await fetchData(() => fetchNewProduct(productData));
+            if(productData) {
+                
+                navigate('/');
 
+            }
+        } catch (error) {
+            console.error('Error al crear el producto:', error);
+        }
+    };
     return (
         <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold text-center mb-6">Agregar Producto Nuevo</h2>
