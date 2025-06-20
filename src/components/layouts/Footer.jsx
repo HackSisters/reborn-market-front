@@ -27,7 +27,6 @@ const Footer = () => {
             <li><a href="#terminos-condiciones" className="hover:underline">Términos y Condiciones</a></li>
           </ul>
 
-          {/* Социальные сети */}
           <div className="social-media mt-4 flex space-x-6">
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
               <FaFacebook size={30} />

@@ -1,33 +1,42 @@
 import React, { useState, useEffect} from 'react';
 import { useForm } from 'react-hook-form';
 import CustomButton from "../ui/buttons/CustomButton";
+import { useFetch } from '../../hooks/UseFetch';
+import { fetchNewProduct } from '../../services/FetchService';
+import { useNavigate } from 'react-router-dom';
 
-    //Clouddinary
+
 const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dtxf1xjmd/image/upload"
-const CLOUDINARY_UPLOAD_PRESET = "ml_default"
+const CLOUDINARY_UPLOAD_PRESET = "HackatonF5"
 
 const FormAddProducts = () => {
-    // Estado para almacenar las categorías que vienen del backend
     const [categories, setCategories] = useState([]);
     const [conditions, setConditions] = useState([]);
     const [imagePreview, setImagePreview] = useState(null);  
     const [imageUrl, setImageUrl] = useState("");
+    const [productData, setProductData] = useState("");
+    const { data, error, loading, fetchData } = useFetch();
+    const navigate = useNavigate();
 
-
-    // Simulamos la recepción de categorías del backend
     useEffect(() => {
-        // Aquí harías la llamada a tu backend para obtener las categorías
         const fetchedCategories = [
-            { id: 1, name: 'Cunas' },
-            { id: 2, name: 'Juguetes' },
-            { id: 3, name: 'Ropa' },
+            { id: 1, name: "ROPA" },
+            { id: 2, name: "CALZADO" },
+            { id: 3, name: "JUGUETES" },
+            { id: 4, name: "ACCESORIOS" },
+            { id: 5, name: "ARTÍCULOS PARA BEBÉ" },
+            { id: 6, name: "SALUD Y SEGURIDAD" },
+            { id: 7, name: "MUEBLES" },
+            { id: 8, name: "ALIMENTACIÓN" },
+            { id: 9, name: "LIBROS" },
+            { id: 10, name: "ROPA DE CAMA" },
+            { id: 11, name: "MATERNIDAD" }
         ];
         setCategories(fetchedCategories);
 
         const fetchedConditions = [
             { id: 1, name: 'Usado' },
-            { id: 2, name: 'En buen estado' },
-            { id: 3, name: 'Nuevo' },
+            { id: 2, name: 'Nuevo' },
         ];
         setConditions(fetchedConditions);
     }, []);
@@ -54,14 +63,6 @@ const FormAddProducts = () => {
         }
     };
     const handleImageChange = (event) => {
-        // const file = event.target.files[0];
-        // if (file) {
-        //     const reader = new FileReader();
-        //     reader.onloadend = () => {
-        //         setImagePreview(reader.result);
-        //     };
-        //     reader.readAsDataURL(file);
-        // }
         const file = event.target.files[0];
         if (file) {
             uploadImageToCloudinary(file);
@@ -75,20 +76,30 @@ const FormAddProducts = () => {
     } = useForm();
 
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const productData = {
-            id: 1, // Esto se generaría en el backend
             name: data.name,
-            price: data.price,
-            // image: data.image,
             image: imageUrl,
             description: data.description,
-            category: data.category,
+            price: data.price,
             age: data.age,
+            condition: data.condition.toUpperCase(),
+            userId: 1,
+            categoryId: data.category,
         };
-        console.log("Datos del producto enviado: ", productData);
-    };
 
+        setProductData(productData);
+        try {
+            await fetchData(() => fetchNewProduct(productData));
+            if(productData) {
+                
+                navigate('/');
+
+            }
+        } catch (error) {
+            console.error('Error al crear el producto:', error);
+        }
+    };
     return (
         <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold text-center mb-6">Agregar Producto Nuevo</h2>
@@ -103,7 +114,7 @@ const FormAddProducts = () => {
                     >
                         <option value="">Selecciona una categoría</option>
                         {categories.map((category) => (
-                            <option key={category.id} value={category.name}>
+                            <option key={category.id} value={category.id}>
                                 {category.name}
                             </option>
                         ))}
@@ -197,8 +208,8 @@ const FormAddProducts = () => {
                 <div className="mb-4">
                     <label htmlFor="state" className="block text-lg font-medium mb-2">Estado del Producto</label>
                     <select
-                        id="state"
-                        {...register('state', { required: 'El estado es obligatorio' })}
+                        id="condition"
+                        {...register('condition', { required: 'El estado es obligatorio' })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-2"
                     >
                         <option value="">Selecciona el estado del producto</option>
@@ -208,7 +219,7 @@ const FormAddProducts = () => {
                             </option>
                         ))}
                     </select>
-                    {errors.state && <p className="text-red-400 text-sm">{errors.state.message}</p>}
+                    {errors.condition && <p className="text-red-400 text-sm">{errors.condition.message}</p>}
                 </div>
 
                 <div className="mb-4">
