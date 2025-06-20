@@ -24,7 +24,6 @@ const Header = () => {
         />
       </Link>
 
-      {/* boton hamburguesa para pantallas pequeñas */}
       <button
         onClick={toggleMenu}
         className="block lg:hidden p-2 text-violet focus:outline-none z-10"
@@ -62,7 +61,6 @@ const Header = () => {
         )}
       </button>
 
-      {/* navegacion */}
       <nav
         className={`flex absolute top-0 right-0 transition-all duration-300 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           } lg:relative lg:translate-x-0`}
@@ -83,11 +81,6 @@ const Header = () => {
           </li>
           {isAuthenticated ? (
             <>
-              <CustomButton
-                to="/add-products"
-              >
-                Vender
-              </CustomButton>
               <li>
                 <CustomButton
                   onClick={logout}
